@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.post_list, name='post_list'),
     path('generate/pdf/', views.generate_pdf, name='generate_pdf'),
     path('generate/truck_control/', views.truck_control_pdf, name='truck_control_pdf'),
+    path('generate/truck_control2/', views.generate_pdf, name='truck_control_with_page'),
 ]

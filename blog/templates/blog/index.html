@@ -1,0 +1,177 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">       
+        <title>TEST</title>
+        <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
+
+        <style>
+          
+           body {
+                height: 210mm;
+                width: 297mm;                
+                margin-left: auto;
+                margin-right: auto;
+                background: white;               
+            }
+            .logo {
+                float: left;            
+                margin-left: 10px;                   
+            }           
+            .title{
+                margin-left: 40%;  
+                margin-top: 50px;                
+                font-family: 'Prompt', sans-serif;
+                font-size: 30px;
+                margin-right: 10px;
+            }
+            .detail{
+                font-family: 'Prompt', sans-serif;               
+                font-size: 12px;
+             
+            }
+            .featurette-divider {
+                margin: 1rem 0;
+                width: 640px;
+            }
+            table{                
+                width: 620px;
+                border-collapse: collapse;
+                border: 1px solid #ddd;
+                margin-left: 10px;
+                margin-right: auto;
+                margin-top: 16%;
+                font-family: 'Prompt', sans-serif;
+                table-layout: fixed;
+                word-wrap: break-word;         /* All browsers since IE 5.5+ */
+                overflow-wrap: break-word;     /* Renamed property in CSS3 draft spec */
+            }
+            th, td {
+                text-align: center;
+                padding: 15px;
+                border: 1px solid #ddd;
+                font-family: 'Prompt', sans-serif;
+                font-size: 10px;
+            }
+            .tr-height{
+                height: mm;
+                overflow: hidden;
+                line-height: 10px;
+            }
+            .authorized{
+                font-family: 'Prompt', sans-serif;
+                text-align: center;
+                font-size: 12px;              
+                margin-block-start: 10%;
+                margin-bottom: 10%;
+                margin-top: 2%;
+            }
+
+            .page_right{
+                font-family: 'Prompt', sans-serif;
+                font-size: 10px;
+                text-align: center;
+                margin-left: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="page_right"><p>Page {{page_no}} of {{ all_page_no }}</p></div>
+        
+        <header>
+            <div class="container-fluid" style="height: 60px;">
+                <div class="logo">
+                    <img  src="https://uppic.cc/d/yPYF" style="width: 150px;">
+                </div>            
+                <div class="title">
+                    <b>Truck Control</b>
+                </div>
+            </div>
+        </header>
+        <hr class="featurette-divider" style="margin-top: 5%;">
+        <detail class="detail">
+            <div class="container" style="margin-left: 10px">
+                <div class="row ">
+                    <div class="col-6" style="width: 30%; float: left;">
+                        <p>Truck No. (ทะเบียนรถ) : {{ truck_no }}</p>
+                    </div>
+                    <div class="col-6" style="width: 45%; float: left;">
+                        <p>Truck Control No. (เลขที่ใบคุมรถ) : {{ truck_control_no }}</p>
+                    </div>
+                <div class="row ">
+                    <div class="col-6" style="width: 30%; float: left;">
+                        <p>Truck Type (ประเภทรถ) : {{ truck_type }}</p>
+                    </div> 
+                    <div class="col-6" style="width: 45%; float: left;">
+                        <p>Promised Date (วันที่ต้องการ) : {{ promised_date }}</p> 
+                </div>
+                <div class="row ">
+                    <div class="col-6" style="width: 100%; float: left;">
+                        <p>Driver Name (ชื่อพนักงานขับรถ) : {{ driver_name }}</p>
+                    </div> 
+                </div>
+                <div class="row ">
+                    <div class="col-6" style="width: 100%; float: left;">
+                        <p>Telephone (เบอร์โทรศัพท์) : {{ telephone }}</p>
+                    </div> 
+                </div>
+            </div>                  
+        </detail>
+
+        <table>
+            <tr>
+                <th style="width: 1.5%;">No.<br>(ลำดับที่)</th>
+                <th style="width: 3%;">Destination<br>(สถานที่จัดส่ง)</th>
+                <th style="width: 6%;">Delivery Date<br>(วันที่ส่งของ)</th>
+                <th style="width: 6%;">Delivery Note No.<br>(เลขที่ใบส่งของ)</th>
+                <th style="width: 10%;">Remark<br>(หมายเหตุ)</th>
+            </tr>
+            {% for obj in master_list %}
+            <tr style="height: 8mm;">                
+                <td>{{ forloop.counter|add:start_index }}</td>
+                <td>{{ obj.customer_code }}</td>
+                <td>{{ obj.updated_timestamp|default_if_none:""|date:'Y-m-d' }}</td>
+                <td>{{ obj.part_no }}</td>
+                <td>{{ obj.model }}</td>
+            </tr>
+            {%endfor%}          
+        </table>
+      
+        <div  class="authorized">
+            <div class="container">
+                <div class="row 100%">
+                    <div class="col-md" style="float: left; width: 14%;;">
+                        Printed by (จัดทำโดย)
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        Customer Service<br>(เจ้าหน้าที่ประสานงานลูกค้า)
+                    </div>
+                    <div class="col-md" style="float: left; width: 25%;" >              
+                        Checked by (ตรวจสอบโดย)
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        Warehouse Supervisor<br>(หัวหน้างานคลังสินค้า)                  
+                    </div>
+                    <div class="col-md" style="float: left; width: 20%;">                   
+                        Part Receiving by (รับสินค้าโดย)
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        Truck Driver<br>(พนักงานขับรถ)               
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
