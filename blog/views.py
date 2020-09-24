@@ -14,7 +14,7 @@ import math
 
 
 def post_list(request):
-    return render(request, 'blog/truck_control.html', {})
+    return render(request, 'blog/index2.html', {})
 
 def generate_pdf(request):
     """Generate pdf."""
